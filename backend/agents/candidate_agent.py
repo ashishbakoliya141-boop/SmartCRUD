@@ -8,7 +8,6 @@ from backend.core.config import settings
 from backend.agents.tools import get_candidate_tools
 from backend.agents.prompts import SYSTEM_PROMPT
 
-
 def get_agent_executor(db: Session) -> AgentExecutor:
 
     llm = ChatGroq(
@@ -18,7 +17,6 @@ def get_agent_executor(db: Session) -> AgentExecutor:
     )
 
     tools = get_candidate_tools(db)
-
 
     prompt = ChatPromptTemplate.from_messages([
         ("system", SYSTEM_PROMPT),
@@ -34,7 +32,6 @@ def get_agent_executor(db: Session) -> AgentExecutor:
         tools=tools,
         max_iterations=5   
     )
-
 
 def ask_agent(prompt: str, db: Session, chat_history: list = []) -> dict:
     executor = get_agent_executor(db)

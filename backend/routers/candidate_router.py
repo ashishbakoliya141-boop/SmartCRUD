@@ -11,11 +11,9 @@ router = APIRouter(
     tags=["Candidates"]
 )
 
-
 @router.get("/")
 def get_all_candidates(db: Session = Depends(get_db)):
     return fetch_all_users(db)
-
 
 @router.get("/{id}")
 def get_candidate(id: int, db: Session = Depends(get_db)):
@@ -24,11 +22,9 @@ def get_candidate(id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Candidate not found")
     return candidate
 
-
 @router.post("/", status_code=201)
 def add_candidate(candidate: CandidateCreate, db: Session = Depends(get_db)):
     return create_user_service(db, candidate)
-
 
 @router.put("/{id}")
 def update_candidate(id: int, candidate: CandidateUpdate, db: Session = Depends(get_db)):
@@ -36,7 +32,6 @@ def update_candidate(id: int, candidate: CandidateUpdate, db: Session = Depends(
     if not updated:
         raise HTTPException(status_code=404, detail="Candidate not found")
     return updated
-
 
 @router.delete("/{id}", status_code=204)
 def delete_candidate(id: int, db: Session = Depends(get_db)):
