@@ -11,18 +11,17 @@ DATABASE_URL = URL.create(
     port=settings.DB_PORT,
     database=settings.DB_NAME
 )
-print("----------------------------------------------------------------------------------->",DATABASE_URL)
 
 engine = create_engine(DATABASE_URL)
 
 
-SessionLocal = sessionmaker( # it creates temprary conversation session
+SessionLocal = sessionmaker( 
     autocommit=False,
-    autoflush=False, # sqlalchemy automatcially does not push changes from the database
+    autoflush=False, 
     bind=engine
 )
 
-Base = declarative_base() # map the all models inside database tables
+Base = declarative_base() 
 
 def get_db():
     db = SessionLocal()

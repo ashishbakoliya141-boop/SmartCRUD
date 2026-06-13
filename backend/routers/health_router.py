@@ -12,7 +12,7 @@ router = APIRouter(
 def health_check():
 
     try:
-        with engine.connect() as connection: # open the temprory connection with database
+        with engine.connect() as connection:
             connection.execute(text("SELECT 1"))
 
         return {
