@@ -18,8 +18,5 @@ def get_user_tool(db, user_id):
 def update_user_tool(db, user_id, user):
     return update_user_service(db=db, user_id=user_id, user_data=user)
 
-# def partial_update_user_tool(db, user_id, user):
-#     return partial_update_user_service(db=db, user_id=user_id, user_data=user)
-
 def delete_user_tool(db, user_id):
     return delete_user_service(db=db, user_id=user_id)
